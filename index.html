@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Trip Manager</title>
+  <link rel="stylesheet" href="style.css" />
+  <script src="script.js" defer></script>
+</head>
+<body>
+    <header class="header">
+      <div>
+        <h1>Trip Manager</h1>
+        <p>Track expenses and manage contributions</p>
+      </div>
+      <button class="btn-primary" id="newtrip">+ New Trip</button>
+    </header>
+
+  <div class="container">
+
+    <!-- Header -->
+    
+
+    <!-- Stats Section -->
+    <section class="stats">
+      <div class="card">
+        <h3>Total Trips</h3>
+        <p class="number">3</p>
+      </div>
+
+      <div class="card">
+        <h3>Active Trips</h3>
+        <p class="number">1</p>
+      </div>
+
+      <div class="card gradient">
+        <h3 class="total-spent">Total Spent</h3>
+        <p class="number">&#8377;2395.00</p>
+      </div>
+    </section>
+
+    <!-- Trips Section -->
+    <section class="trips">
+      <h2>Your Trips</h2>
+
+      <div class="trip-grid">
+
+        <!-- Trip 1 -->
+        <div class="trip-card">
+          <img src="https://images.unsplash.com/photo-1502602898657-3e91760cbb34" alt="Paris">
+          <div class="trip-content">
+            <div class="trip-header">
+              <h3>Paris Weekend Getaway</h3>
+              <span class="badge ongoing">Ongoing</span>
+            </div>
+            <p>📍 Paris, France</p>
+            <p>📅 2/10/2026 - 2/14/2026</p>
+          </div>
+        </div>
+
+        <!-- Trip 2 -->
+        <div class="trip-card">
+          <img src="https://images.unsplash.com/photo-1507525428034-b723cf961d3e" alt="Bali">
+          <div class="trip-content">
+            <div class="trip-header">
+              <h3>Bali Beach Adventure</h3>
+              <span class="badge upcoming">Upcoming</span>
+            </div>
+            <p>📍 Bali, Indonesia</p>
+            <p>📅 4/15/2026 - 4/22/2026</p>
+          </div>
+        </div>
+
+        <!-- Trip 3 -->
+        <div class="trip-card">
+          <img src="https://images.unsplash.com/photo-1549692520-acc6669e2f0c" alt="Tokyo">
+          <div class="trip-content">
+            <div class="trip-header">
+              <h3>Tokyo Food Tour</h3>
+              <span class="badge completed">Completed</span>
+            </div>
+            <p>📍 Tokyo, Japan</p>
+            <p>📅 2/1/2026 - 2/8/2026</p>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+  </div>
+  <div class="modal" hidden>
+    <span class="close-btn">&times;</span>
+    <h2>Create New Trip</h2>
+
+    <form>
+        <div class="form-group">
+            <label>Trip Name</label>
+            <input type="text" placeholder="e.g., Paris Weekend" required />
+        </div>
+
+        <div class="form-group">
+            <label>Destination</label>
+            <input type="text" placeholder="e.g., Paris, France" required />
+        </div>
+
+        <div class="date-row">
+            <div class="form-group">
+                <label>Start Date</label>
+                <input type="date" required />
+            </div>
+
+            <div class="form-group">
+                <label>End Date</label>
+                <input type="date" required />
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label>Budget (Optional)</label>
+            <input type="number" placeholder="e.g., 2000" />
+        </div>
+
+        <!-- Image Upload Option -->
+        <div class="form-group">
+            <label>Choose Trip Image</label>
+            <input type="file" accept="image/*" />
+        </div>
+
+        <button type="submit" class="submit-btn">Create Trip</button>
+    </form>
+</div>
+
+</body>
+</html>
