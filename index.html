@@ -1,3 +1,4 @@
+=======
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -5,9 +6,10 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Trip Manager</title>
   <link rel="stylesheet" href="style.css" />
-  <script src="script.js" defer></script>
+  <script type="module" src="js/index.js"></script>
 </head>
 <body>
+    <!-- Header -->
     <header class="header">
       <div>
         <h1>Trip Manager</h1>
@@ -18,19 +20,19 @@
 
   <div class="container">
 
-    <!-- Header -->
-    
 
     <!-- Stats Section -->
     <section class="stats">
       <div class="card">
         <h3>Total Trips</h3>
-        <p class="number">3</p>
+        <span class="total-trips"></span>
+        <p class="number" id="totalTrips">3</p>
       </div>
 
       <div class="card">
         <h3>Active Trips</h3>
-        <p class="number">1</p>
+        <span class="active-trips"></span>
+        <p class="number" id="activeTrips">1</p>
       </div>
 
       <div class="card gradient">
@@ -44,8 +46,7 @@
       <h2>Your Trips</h2>
 
       <div class="trip-grid">
-
-        <!-- Trip 1 -->
+         <!-- Trip 1 -->
         <div class="trip-card">
           <img src="https://images.unsplash.com/photo-1502602898657-3e91760cbb34" alt="Paris">
           <div class="trip-content">
@@ -86,32 +87,36 @@
 
       </div>
     </section>
-
   </div>
+  
+
+<div class="overlay" hidden></div>
+
+<div class="modal-container">
   <div class="modal" hidden>
     <span class="close-btn">&times;</span>
     <h2>Create New Trip</h2>
 
-    <form>
+    <form id="newTripForm">
         <div class="form-group">
             <label>Trip Name</label>
-            <input type="text" placeholder="e.g., Paris Weekend" required />
+            <input type="text" placeholder="e.g., Paris Weekend" name="tripName" required />
         </div>
 
         <div class="form-group">
             <label>Destination</label>
-            <input type="text" placeholder="e.g., Paris, France" required />
+            <input type="text" placeholder="e.g., Paris, France" name="destination" required />
         </div>
 
         <div class="date-row">
             <div class="form-group">
                 <label>Start Date</label>
-                <input type="date" required />
+                <input type="date" required name="startDate" />
             </div>
 
             <div class="form-group">
                 <label>End Date</label>
-                <input type="date" required />
+                <input type="date" required name="endDate" />
             </div>
         </div>
 
@@ -123,12 +128,14 @@
         <!-- Image Upload Option -->
         <div class="form-group">
             <label>Choose Trip Image</label>
-            <input type="file" accept="image/*" />
+            <input type="file" accept="image/*" name="img" />
         </div>
 
         <button type="submit" class="submit-btn">Create Trip</button>
     </form>
+  </div>
 </div>
 
 </body>
 </html>
+>>>>>>> 018dd68 (Create js folder and rename script.js to index.js)
