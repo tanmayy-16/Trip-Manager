@@ -32,8 +32,7 @@ export const saveTrip = async (objectName, data) => {
     const id = await putData(store, data);
     await tx.complete;
     data.id = id
-    renderTrip(data);
-    renderStats();
+    return data
 }
 
 

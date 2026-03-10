@@ -142,13 +142,15 @@ overlay.addEventListener("click", closeModal);
 
 document.addEventListener("keydown", handleEscape);
 
-newTripForm.addEventListener("submit", (event) => {
+newTripForm.addEventListener("submit", async (event) => {
     event.preventDefault();
     closeModal();
     const formData = new FormData(newTripForm);
     const data = Object.fromEntries(formData);
     newTripForm.reset();
-    saveTrip("trips", data);
+    const trip = await saveTrip("trips", data);
+    renderTrip(trip);
+    renderStats();
 });
 
 
