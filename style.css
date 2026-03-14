@@ -44,15 +44,22 @@ body {
 .btn-primary {
   background: #0f172a;
   color: white;
-  padding: 12px 20px;
+  padding: 8px 20px;
   border: none;
   border-radius: 10px;
   font-size: 14px;
   cursor: pointer;
+  display: flex;
+  align-items: center;
+  gap: 8px
 }
 
 .btn-primary:hover {
   opacity: 0.9;
+}
+
+.plus {
+  font-size: 22px;
 }
 
 /* Stats */
@@ -82,7 +89,7 @@ body {
   height: 18px;
   display: inline-block;
   position: absolute;
-  top: 15px;
+  top: 18px;
   right: 20px;
 }
 
@@ -139,6 +146,38 @@ body {
   width: 100%;
   height: 200px;
   object-fit: cover;
+}
+
+.content-list {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+}
+
+.content-row {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.icon-alignment {
+  width: 18px;
+  height: 16px;
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: contain;
+}
+
+.location {
+  background-image: url('icons/location.svg');
+}
+
+.calendar {
+  background-image: url('icons/calendar.svg');
+}
+
+.group {
+  background-image: url('icons/group.svg');
 }
 
 .del-btn {

@@ -49,6 +49,12 @@ const renderTrips = async () => {
     })
 }
 
+const toDateObj = (startDate, endDate) => {
+    startDate = new Date(startDate);
+    endDate = new Date(endDate);
+    return [startDate, endDate]
+}
+
 
 const renderTrip = (trip) => {
     const card = document.createElement("div");
@@ -60,16 +66,30 @@ const renderTrip = (trip) => {
     img.onload = () => {
         URL.revokeObjectURL(img.src)
     }
+    const [startDate, endDate] = toDateObj(trip.startDate, trip.endDate);
     const status = getTripStatus(trip);
-    
+   
     card.innerHTML += `
         <div class="trip-content">
             <div class="trip-header">
             <h3>${trip.tripName}</h3>
             <span class="badge ${status.toLowerCase()}">${status}</span>
             </div>
-            <p>📍 ${trip.destination}</p>
-            <p>📅 ${trip.startDate} - ${trip.endDate}</p>
+            <div class="content-list">
+                <div class="content-row">
+                    <span class="icon-alignment location"></span>
+                    <p>${trip.destination}</p>
+                </div>
+                <div class="content-row"> 
+                    <span class="icon-alignment calendar"></span>
+                    <p>${startDate.toLocaleDateString('en-GB')} - ${
+                        endDate.toLocaleDateString('en-GB')}</p>
+                </div>
+                <div class="content-row"> 
+                    <span class="icon-alignment group"></span>
+                    <p>${0} Participants</p>
+                </div>
+            </div>
             <button class="del-btn" data-id="${trip.id}"></button>
         </div>
     `;
@@ -80,13 +100,11 @@ const renderTrip = (trip) => {
 
 
 const getTripStatus = (trip) => {
-    const startDate = new Date(trip.startDate);
-    const endDate = new Date(trip.endDate);
     const today = new Date();
     today.setHours(0,0,0,0);
+    const [startDate, endDate] = toDateObj(trip.startDate, trip.endDate);
     startDate.setHours(0,0,0,0);
     endDate.setHours(0,0,0,0);
- 
     let status;
     if (startDate > today) {
         status = "Upcoming"
@@ -148,6 +166,7 @@ newTripForm.addEventListener("submit", async (event) => {
     const formData = new FormData(newTripForm);
     const data = Object.fromEntries(formData);
     newTripForm.reset();
+    data.participants = 0;
     const trip = await saveTrip("trips", data);
     renderTrip(trip);
     renderStats();
