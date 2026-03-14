@@ -1,0 +1,839 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Trip Expenses</title>
+
+<link rel="stylesheet" href="trip.css">
+
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@100;500;600;700&display=swap" rel="stylesheet">
+
+<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+
+<script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.1/dist/chart.umd.min.js"></script>
+<script type="module" src="js/trip.js"></script>
+
+</head>
+
+<body>
+
+
+    <!-- HEADER -->
+    <header class="header">
+        <!-- BACK BUTTON -->
+        <div class="back-btn">
+            <span class="material-icons">arrow_back</span>
+            Back to Dashboard
+        </div>
+
+        
+        <div class="trip-header">
+
+            <h1 id="tripName">Paris Weekend Getaway</h1>
+
+            <div class="trip-meta">
+
+                <div class="meta-item">
+                    <span class="icon-alignment location"></span>
+                    <span id="destination">Paris, France</span>
+                </div>
+
+                <div class="meta-item">
+                    <span class="icon-alignment calendar"></span>
+                    <span id="date">10/03/2026 - 14/03/2026</span>
+                </div>
+
+                <div class="meta-item">
+                    <span class="icon-alignment group"></span>
+                    <span id="group">1</span> Participants
+                </div>
+
+            </div>
+
+        </div>
+        
+        <div class="btn-container">
+            <button class="add-expense-btn" onclick="openModal()">
+                <!-- <span class="material-icons">add</span> -->
+                <span class="plus">+</span>
+                Add Expense
+            </button>
+        </div>
+
+    </header>
+
+<div class="container">
+
+    <!-- STATS -->
+    <div class="stats-grid">
+
+        <div class="card">
+            <div class="card-title">Total Expenses</div>
+            <div class="card-value">&#8377;1105.00</div>
+            <div class="card-sub">5 transactions</div>
+        </div>
+
+        <div class="card">
+            <div class="card-title">Budget</div>
+            <div class="card-value">&#8377;1500.00</div>
+            <div class="card-sub">74% used</div>
+        </div>
+
+        <div class="card">
+            <div class="card-title">Per Person</div>
+            <div class="card-value">&#8377;276.25</div>
+            <div class="card-sub">Average share</div>
+        </div>
+
+        <div class="card">
+            <div class="card-title">Remaining</div>
+            <div class="card-value">&#8377;395.00</div>
+            <div class="card-sub">Left to spend</div>
+        </div>
+
+    </div>
+
+
+    <!-- TABS -->
+    <div class="tabs">
+        <button class="tab active" id="expense" onclick="showTab('expenses', 'expense')">Expenses</button>
+        <button class="tab" id="participant" onclick="showTab('participants', 'participant')">Participants</button>
+        <button class="tab" id="settlements" onclick="showTab('settlement', 'settlements')">Settlement</button>
+        <button class="tab" id="analytic" onclick="showTab('analytics', 'analytic')">Analytics</button>
+    </div>
+
+
+    <!-- EXPENSE LIST -->
+    <div id="expenses" class="tab-content active">
+        <div class="expense-page">
+            <div class="expense-section">
+
+                <h3>Expense History</h3>
+
+
+                <div class="expense-item">
+
+                    <div class="expense-left">
+
+                        <div class="expense-icon"></div>
+
+                        <div>
+                            <div class="expense-title">
+                            Hotel Reservation
+                            <span class="tag">accommodation</span>
+                            </div>
+
+                            <div class="expense-meta">
+                            Paid by Alex Johnson · Split among 4 people · 10/03/2026
+                            </div>
+
+                        </div>
+
+                    </div>
+
+                    <div class="expense-right">
+
+                        <div class="expense-price">&#8377;800.00</div>
+                        <div class="per-person">&#8377;200.00 / person</div>
+
+                        <span class="material-icons delete">delete</span>
+
+                    </div>
+                    
+                </div>
+
+
+                <div class="expense-item">
+
+                    <div class="expense-left">
+
+                        <div class="expense-icon"></div>
+
+                        <div>
+
+                            <div class="expense-title">
+                            Dinner at Italian Restaurant
+                            <span class="tag food">food</span>
+                            </div>
+
+                            <div class="expense-meta">
+                            Paid by Sarah Williams · Split among 4 people · 11/03/2026
+                            </div>
+
+                        </div>
+
+                    </div>
+
+                    <div class="expense-right">
+                        <div class="expense-price">&#8377;120.00</div>
+                        <div class="per-person">&#8377;30.00 / person</div>
+
+                        <span class="material-icons delete">delete</span>
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+
+    <div id="participants" class="tab-content">
+
+        <div class="participants-page">
+
+        <div class="participants-header">
+
+        <h3>Trip Participants</h3>
+
+        <button class="add-participant-btn" onclick="openParticipantModal()">
+        <span class="material-icons">person_add</span>
+        Add Participant
+        </button>
+
+        </div>
+
+
+        <div class="participant-card">
+
+        <div class="participant-left">
+
+        <div class="avatar">AJ</div>
+
+        <div>
+        <div class="participant-name">Alex Johnson</div>
+        <div class="participant-email">
+        <span class="material-icons mail-icon">mail</span>
+        alex@example.com
+        </div>
+        </div>
+
+        </div>
+
+        <div class="participant-balance positive">
+
+        <div class="balance-label">
+        <span class="material-icons">trending_up</span>
+        Gets back
+        </div>
+
+        <div class="balance-amount">&#8377;597.08</div>
+
+        </div>
+
+        </div>
+
+
+
+        <div class="participant-card">
+
+        <div class="participant-left">
+
+        <div class="avatar">SW</div>
+
+        <div>
+        <div class="participant-name">Sarah Williams</div>
+        <div class="participant-email">
+        <span class="material-icons mail-icon">mail</span>
+        sarah@example.com
+        </div>
+        </div>
+
+        </div>
+
+        <div class="participant-balance negative">
+
+        <div class="balance-label">
+        <span class="material-icons">trending_down</span>
+        Owes
+        </div>
+
+        <div class="balance-amount">&#8377;162.92</div>
+
+        </div>
+
+        </div>
+
+
+
+        <div class="participant-card">
+
+            <div class="participant-left">
+
+                <div class="avatar">MC</div>
+
+                <div>
+                    <div class="participant-name">Mike Chen</div>
+                    <div class="participant-email">
+                        <span class="material-icons mail-icon">mail</span>
+                        mike@example.com
+                    </div>
+                </div>
+
+                </div>
+
+                <div class="participant-balance negative">
+
+                    <div class="balance-label">
+                        <span class="material-icons">trending_down</span>
+                        Owes
+                    </div>
+                    <div class="balance-amount">&#8377;222.92</div>
+
+                </div>
+
+                </div>
+
+
+                <div class="participant-card">
+
+                    <div class="participant-left">
+
+                        <div class="avatar">ED</div>
+
+                        <div>
+                            <div class="participant-name">Emma Davis</div>
+                            <div class="participant-email">
+                                <span class="material-icons mail-icon">mail</span>
+                                emma@example.com
+                            </div>
+                        </div>
+
+                    </div>
+
+                    <div class="participant-balance negative">
+                        <div class="balance-label">
+                            <span class="material-icons">trending_down</span>
+                            Owes
+                        </div>
+
+                        <div class="balance-amount">&#8377;211.25</div>
+
+                    </div>
+
+                </div>
+
+            </div>
+    </div>
+
+    <div id="settlement" class="tab-content">
+
+        <div class="settlement-card">
+
+            <h3>Suggested Settlements</h3>
+            <p class="settlement-sub">
+            Optimized to minimize number of transactions
+            </p>
+
+
+            <!-- SETTLEMENT ITEM -->
+
+            <div class="settlement-item">
+
+                <div class="settlement-row">
+
+                    <div class="settlement-user">
+
+                        <div class="avatar negative">MC</div>
+
+                        <div>
+                            <div class="participant-name">Mike Chen</div>
+                            <div class="settlement-status">Owes</div>
+                        </div>
+
+                    </div>
+
+
+                    <div class="settlement-middle">
+
+                        <span class="material-icons arrow">arrow_forward</span>
+
+                        <div class="settlement-amount">$222.92</div>
+
+                    </div>
+
+
+                    <div class="settlement-user right">
+
+                        <div>
+                            <div class="participant-name">Alex Johnson</div>
+                            <div class="settlement-status">Receives</div>
+                        </div>
+
+                        <div class="avatar positive">AJ</div>
+
+                    </div>
+
+                </div>
+
+
+                <div class="settlement-action">
+
+                    <button class="settle-btn">Mark as Settled</button>
+
+                    <span class="material-icons copy">content_copy</span>
+
+                </div>
+
+            </div>
+
+
+
+            <!-- SECOND ITEM -->
+
+            <div class="settlement-item">
+
+                <div class="settlement-row">
+
+                    <div class="settlement-user">
+
+                        <div class="avatar negative">ED</div>
+
+                        <div>
+                            <div class="participant-name">Emma Davis</div>
+                            <div class="settlement-status">Owes</div>
+                        </div>
+
+                    </div>
+
+
+                    <div class="settlement-middle">
+
+                        <span class="material-icons arrow">arrow_forward</span>
+
+                        <div class="settlement-amount">$211.25</div>
+
+                    </div>
+
+
+                    <div class="settlement-user right">
+
+                        <div>
+                            <div class="participant-name">Alex Johnson</div>
+                            <div class="settlement-status">Receives</div>
+                        </div>
+
+                        <div class="avatar positive">AJ</div>
+
+                    </div>
+
+                </div>
+
+
+                <div class="settlement-action">
+
+                    <button class="settle-btn">Mark as Settled</button>
+
+                    <span class="material-icons copy">content_copy</span>
+
+                </div>
+
+            </div>
+
+
+
+            <!-- THIRD ITEM -->
+
+            <div class="settlement-item">
+
+                <div class="settlement-row">
+
+                    <div class="settlement-user">
+
+                        <div class="avatar negative">SW</div>
+
+                        <div>
+                            <div class="participant-name">Sarah Williams</div>
+                            <div class="settlement-status">Owes</div>
+                        </div>
+
+                    </div>
+
+
+                    <div class="settlement-middle">
+
+                        <span class="material-icons arrow">arrow_forward</span>
+
+                        <div class="settlement-amount">$162.91</div>
+
+                    </div>
+
+
+                    <div class="settlement-user right">
+
+                        <div>
+                            <div class="participant-name">Alex Johnson</div>
+                            <div class="settlement-status">Receives</div>
+                        </div>
+
+                        <div class="avatar positive">AJ</div>
+
+                    </div>
+
+                </div>
+
+
+                <div class="settlement-action">
+
+                    <button class="settle-btn">Mark as Settled</button>
+
+                    <span class="material-icons copy">content_copy</span>
+
+                </div>
+
+            </div>
+
+        </div>
+
+
+
+        <!-- BALANCE SUMMARY -->
+
+        <div class="balance-summary">
+
+            <h3>Balance Summary</h3>
+
+        </div>
+
+    </div>
+
+
+
+    <div id="analytics" class="tab-content">
+
+        <div class="analytics-grid">
+
+        <!-- EXPENSE BY CATEGORY -->
+
+            <div class="analytics-card">
+
+                <h3>Expense by Category</h3>
+                
+                <div class="pie-chart-box">
+                    <canvas id="categoryChart"></canvas>
+                </div>
+
+                <div class="category-list">
+
+                    <div class="category-item">
+                        <span class="dot accommodation"></span>
+                        Accommodation
+                        <span class="amount">$800.00</span>
+                    </div>
+
+                    <div class="category-item">
+                        <span class="dot food"></span>
+                        Food
+                        <span class="amount">$165.00</span>
+                    </div>
+
+                    <div class="category-item">
+                        <span class="dot transport"></span>
+                        Transport
+                        <span class="amount">$60.00</span>
+                    </div>
+
+                    <div class="category-item">
+                        <span class="dot activities"></span>
+                        Activities
+                        <span class="amount">$80.00</span>
+                    </div>
+
+                </div>
+
+            </div>
+
+
+
+        <!-- WHO PAID WHAT -->
+
+        <div class="analytics-card">
+
+            <h3>Who Paid What</h3>
+
+            <canvas id="paidChart"></canvas>
+
+            <div class="paid-list">
+
+                <div class="paid-row">
+                    <span>Alex Johnson</span>
+                    <span>$880.00</span>
+                </div>
+
+                <div class="paid-row">
+                    <span>Sarah Williams</span>
+                    <span>$120.00</span>
+                </div>
+
+                <div class="paid-row">
+                    <span>Mike Chen</span>
+                    <span>$60.00</span>
+                </div>
+
+                <div class="paid-row">
+                    <span>Emma Davis</span>
+                    <span>$45.00</span>
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+
+        <!-- EXPENSE OVER TIME -->
+
+    <div class="analytics-card full">
+
+        <h3>Expenses Over Time</h3>
+
+        <canvas id="timeChart"></canvas>
+
+    </div>
+
+    </div>
+</div>
+
+
+<!-- MODAL -->
+<div class="modal" id="expenseModal">
+
+    <div class="modal-content">
+
+        <div class="modal-header">
+            <h2>Add New Expense</h2>
+            <span class="material-icons close" onclick="closeModal()">close</span>
+        </div>
+
+
+        <label>Description</label>
+        <input type="text" placeholder="e.g., Dinner at restaurant">
+
+        <div class="form-row">
+
+            <div>
+                <label>Amount (&#8377;)</label>
+                <input type="number" placeholder="0.00">
+            </div>
+
+            <div>
+                <label>Date</label>
+                <input type="date">
+            </div>
+
+        </div>
+
+        <label>Category</label>
+        <select>
+            <option>Food</option>
+            <option>Accommodation</option>
+            <option>Transport</option>
+            <option>Activity</option>
+        </select>
+
+
+        <label>Paid By</label>
+        <select>
+            <option>Select who paid</option>
+        </select>
+
+
+        <div class="split-header">
+            <label>Split Among</label>
+            <span>Select All</span>
+        </div>
+
+
+        <div class="participants">
+
+            <label>
+                <span>Alex Johnson</span>
+                <input type="checkbox">
+            </label>
+
+            <label>
+                <span>Sarah Williams</span>
+                <input type="checkbox">
+            </label>
+
+            <label>
+                <span>Mike Chen</span>
+                <input type="checkbox">
+            </label>
+
+            <label>
+                <span>Emma Davis</span>
+                <input type="checkbox">
+            </label>
+
+        </div>
+
+        <button class="submit-btn">Add Expense</button>
+    </div>
+</div>
+
+
+
+<div class="modal" id="participantModal">
+    <div class="modal-content">
+
+        <div class="modal-header">
+            <h2>Add Participant</h2>
+            <span class="material-icons close" onclick="closeParticipantModal()">close</span>
+        </div>
+
+        <label>Name</label>
+        <input type="text" placeholder="e.g., John Doe">
+
+        <label>Email</label>
+        <input type="email" placeholder="e.g., john@example.com">
+
+        <button class="submit-btn">Add Participant</button>
+    </div>
+</div>
+
+
+
+<script>
+
+function openModal(){
+document.getElementById("expenseModal").style.display="flex";
+}
+
+function closeModal(){
+document.getElementById("expenseModal").style.display="none";
+}
+
+function showTab(tab, btn){
+
+    document.querySelectorAll(".tab-content").forEach(el=>{
+        el.classList.remove("active")
+    })
+
+    document.querySelectorAll(".tab").forEach(el=>{
+        el.classList.remove("active")
+        console.log(el)
+    })
+
+    document.getElementById(tab).classList.add("active")
+    document.getElementById(btn).classList.add("active")
+
+}
+
+function openParticipantModal(){
+    document.getElementById("participantModal").style.display="flex"
+}
+
+function closeParticipantModal(){
+    document.getElementById("participantModal").style.display="none"
+}
+
+document.querySelector(".back-btn").addEventListener("click", () => {
+    location.href = "index.html"
+})
+
+
+const categoryChart = new Chart(
+document.getElementById('categoryChart'),
+{
+type:'pie',
+
+data:{
+labels:['Accommodation','Food','Transport','Activities'],
+
+datasets:[{
+data:[800,165,60,80],
+backgroundColor:[
+'#3b82f6',
+'#10b981',
+'#f59e0b',
+'#8b5cf6'
+]
+}]
+},
+
+options:{
+responsive:true,
+maintainAspectRatio:false,
+plugins:{
+legend:{
+position:'bottom'
+}
+}
+}
+
+});
+
+
+
+const paidChart = new Chart(
+document.getElementById('paidChart'),
+{
+type:'bar',
+
+data:{
+labels:[
+'Alex Johnson',
+'Sarah Williams',
+'Mike Chen',
+'Emma Davis'
+],
+
+datasets:[{
+
+label:'Amount Paid',
+
+data:[880,120,60,45],
+
+backgroundColor:'#3b82f6'
+
+}]
+},
+
+options:{
+plugins:{legend:{display:false}},
+scales:{
+y:{beginAtZero:true}
+}
+}
+
+});
+
+
+
+const timeChart = new Chart(
+document.getElementById('timeChart'),
+{
+type:'bar',
+
+data:{
+labels:['Mar 10','Mar 11'],
+
+datasets:[{
+label:'Total Expenses',
+
+data:[880,245],
+
+backgroundColor:'#10b981'
+}]
+},
+
+options:{
+plugins:{legend:{display:false}},
+scales:{
+y:{beginAtZero:true}
+}
+}
+
+});
+
+
+</script>
+
+</body>
+</html>
